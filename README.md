@@ -97,11 +97,11 @@ Se você estiver utilizando o **VS Code** com **Dev Containers**, pode usar a co
 
 Aqui estão alguns dos principais endpoints disponíveis para interagir com o back-end:
 
-- **GET /products**: Retorna todos os produtos.
-- **GET /product/:name**: Retorna um produto específico pelo nome.
-- **POST /product**: Adiciona um novo produto.
-- **PUT /product/:name**: Atualiza um produto existente.
-- **DELETE /product/:name**: Deleta um produto pelo nome.
+- **GET /cursos**: Retorna todos os cursos.
+- **GET /cursos/:id**: Retorna um curso específico pelo id.
+- **POST /cursos**: Adiciona um novo curso.
+- **PUT /cursos/:id**: Atualiza um curso existente.
+- **DELETE /cursos/:id**: Deleta um curso pelo id.
 
 ## Tecnologias Utilizadas
 
