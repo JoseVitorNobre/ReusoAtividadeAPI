@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import { createProductModel } from "../model/productSchema.js"
+import { createCourseModel } from "../model/courseSchema.js"
 
 
 const sequelize = new Sequelize('postgres', 'postgres', 'root', {
@@ -7,13 +7,13 @@ const sequelize = new Sequelize('postgres', 'postgres', 'root', {
     dialect: 'postgres'
 })
 
-let ProductModel = null
+let CourseModel = null
 
 const connection = async () => {
     try {
         await sequelize.authenticate()
         console.log('Conexão feita com sucesso')
-        ProductModel = await createProductModel(sequelize)
+        CourseModel = await createCourseModel(sequelize)
         await sequelize.sync()
         console.log('Base de dados criada')
     } catch (error) {
@@ -24,5 +24,5 @@ const connection = async () => {
 
 export {
     connection,
-    ProductModel
+    CourseModel
 }

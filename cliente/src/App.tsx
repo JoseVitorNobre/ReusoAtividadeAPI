@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ListProducts from "./pages/ListProducts";
-import AddProduct from "./pages/AddProducts";
+import ListCourses from "./pages/ListCourse";
+import AddCourse from "./pages/AddCourse";
+import EditCourse from "./pages/EditCourse";
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ListProducts />} />
-        <Route path="/add" element={<AddProduct />} />
+        <Route path="/" element={<ListCourses />} />
+        <Route path="/add" element={<AddCourse />} />
+        <Route path="/edit/:courseTitle" element={<EditCourse />} />
       </Routes>
     </Router>
   );
