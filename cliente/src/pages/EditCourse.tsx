@@ -3,7 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditCourse: React.FC = () => {
-  const { courseTitle } = useParams<{ courseTitle: string }>();
+  const { id } = useParams<{ id: string }>();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -15,7 +15,7 @@ const EditCourse: React.FC = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await api.get(`/${courseTitle}`);
+        const response = await api.get(`/cursos/${id}`);
         const { title, description, workload } = response.data;
         setFormData({ title, description, workload: String(workload) });
       } catch (error) {
@@ -26,7 +26,7 @@ const EditCourse: React.FC = () => {
     };
 
     fetchCourse();
-  }, [courseTitle, navigate]);
+  }, [id, navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -36,7 +36,7 @@ const EditCourse: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await api.put(`/${courseTitle}`, {
+      await api.put(`/cursos/${id}`, {
         title: formData.title,
         description: formData.description,
         workload: Number(formData.workload),

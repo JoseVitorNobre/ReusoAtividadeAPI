@@ -64,11 +64,11 @@ export const addCourse = async (req, res) => {
 };
 
 export const putCourse = async (req, res) => {
-    const title = req.params.title;
+    const id = req.params.id;
     const updatedData = req.body;
 
     try {
-        const [rowsUpdated] = await CourseModel.update(updatedData, { where: { title } });
+        const [rowsUpdated] = await CourseModel.update(updatedData, { where: { id } });
 
         if (rowsUpdated === 0) {
             return res.status(404).json({ message: "Curso não encontrado" });
@@ -87,10 +87,10 @@ export const putCourse = async (req, res) => {
 };
 
 export const deleteCourse = async (req, res) => {
-    const title = req.params.title;
+    const id = req.params.id;
 
     try {
-        const rowsDeleted = await CourseModel.destroy({ where: { title } });
+        const rowsDeleted = await CourseModel.destroy({ where: { id } });
 
         if (rowsDeleted === 0) {
             return res.status(404).json({ message: "Curso não encontrado" });
@@ -105,13 +105,13 @@ export const deleteCourse = async (req, res) => {
     }
 };
 
-export const findCourseByTitle = async (req, res) => {
-    const { title } = req.params;
+export const findCourseById = async (req, res) => {
+    const { id } = req.params;
 
     try {
         const course = await CourseModel.findOne({
             where: {
-                title: title,
+                id: id,
             },
         });
 

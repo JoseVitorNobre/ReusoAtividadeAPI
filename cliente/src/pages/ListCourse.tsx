@@ -16,7 +16,7 @@ const ListCourses: React.FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await api.get("/?filter=title&order=ASC");
+        const response = await api.get("/cursos?filter=title&order=ASC");
         setCourses(response.data);
       } catch (error) {
         console.error("Erro ao buscar cursos", error);
@@ -26,10 +26,10 @@ const ListCourses: React.FC = () => {
     fetchCourses();
   }, []);
 
-  const handleDelete = async (title: string) => {
+  const handleDelete = async (id: number) => {
     try {
-      await api.delete(`/${title}`);
-      setCourses(courses.filter((course) => course.title !== title));
+      await api.delete(`/cursos/${id}`);
+      setCourses(courses.filter((course) => course.id !== id));
       alert("Curso deletado com sucesso!");
     } catch (error) {
       console.error("Erro ao deletar curso", error);
@@ -56,6 +56,7 @@ const ListCourses: React.FC = () => {
         <table className="w-full border-collapse border border-gray-200 rounded-lg overflow-hidden">
           <thead>
             <tr className="bg-gray-100 text-left">
+              <th className="px-6 py-3 text-sm font-medium text-gray-700">Id</th>
               <th className="px-6 py-3 text-sm font-medium text-gray-700">Título</th>
               <th className="px-6 py-3 text-sm font-medium text-gray-700">Descrição</th>
               <th className="px-6 py-3 text-sm font-medium text-gray-700">
@@ -70,19 +71,20 @@ const ListCourses: React.FC = () => {
                 key={course.id}
                 className="border-b hover:bg-gray-50 transition-all duration-200"
               >
+                <td className="px-6 py-4 text-gray-800">{course.id}</td>
                 <td className="px-6 py-4 text-gray-800">{course.title}</td>
                 <td className="px-6 py-4 text-gray-800">{course.description}</td>
                 <td className="px-6 py-4 text-gray-800">{course.workload}h</td>
                 <td className="px-6 py-4">
                   <button
                     className="mr-4 text-blue-600 hover:text-blue-800 font-medium"
-                    onClick={() => navigate(`/edit/${course.title}`)}
+                    onClick={() => navigate(`/edit/${course.id}`)}
                   >
                     Editar
                   </button>
                   <button
                     className="text-red-600 hover:text-red-800 font-medium"
-                    onClick={() => handleDelete(course.title)}
+                    onClick={() => handleDelete(course.id)}
                   >
                     Deletar
                   </button>

@@ -19,7 +19,7 @@ const AddCourse: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await api.post("/", formData);
+      await api.post("/cursos", formData);
       alert("Curso adicionado com sucesso!");
       navigate("/");
     } catch (error) {
