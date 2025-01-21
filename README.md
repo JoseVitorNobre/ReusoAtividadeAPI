@@ -1,27 +1,26 @@
-Aqui está uma versão melhor formatada do seu README:
+# Projeto de Cadastro de Cursos
 
----
-
-# Projeto de Cadastro de Produtos
-
-Este projeto é uma aplicação **full-stack** composta por um back-end em **Node.js/Express** e um front-end em **React**. Ele permite a **listagem**, **adição**, **edição** e **exclusão** de produtos, com integração com um banco de dados **PostgreSQL**.
+Este projeto é uma aplicação **full-stack** composta por um back-end em **Node.js/Express** e um front-end em **React**. Ele permite a **listagem**, **adição**, **edição** e **exclusão** de cursos, com integração com um banco de dados **PostgreSQL**.
 
 ## Estrutura do Projeto
 
 ```
 - server/           # Código do back-end (API)
 - client/           # Código do front-end (Interface com o usuário)
-- .devcontainer/    # Configuração para criação de instância do PostgreSQL com Docker
+- .devcontainer/    # Configuração para ambiente com Docker ou Codespaces
 ```
 
 ## Requisitos
 
 - **Docker**: Para rodar a instância do PostgreSQL utilizando o `.devcontainer`.
 - **Node.js** (versão 16 ou superior): Para rodar tanto o back-end quanto o front-end.
+- **GitHub Codespaces**: Alternativa para rodar o projeto sem necessidade de configurar o Docker localmente.
 
 ## Como Rodar o Projeto
 
-### 1. Configuração do PostgreSQL com Docker
+### 1. Configuração do PostgreSQL
+
+#### Usando Docker:
 
 1. Navegue até a pasta raiz do projeto.
 2. Abra o terminal e execute o seguinte comando para criar a instância do PostgreSQL com o Docker:
@@ -40,6 +39,15 @@ Este projeto é uma aplicação **full-stack** composta por um back-end em **Nod
 
    Isso irá parar o contêiner e liberar os recursos utilizados pelo PostgreSQL.
 
+#### Usando GitHub Codespaces:
+
+1. Acesse o repositório do projeto no GitHub.
+2. Clique no botão **Code** e selecione **Open with Codespaces**.
+3. Aguarde a configuração automática do ambiente. O **PostgreSQL** será iniciado automaticamente com as configurações definidas no arquivo `.devcontainer/devcontainer.json`.
+4. Para verificar se o banco de dados está configurado corretamente, use as credenciais padrão no arquivo `.env`.
+
+   O banco de dados estará acessível na porta `5432` no ambiente Codespaces.
+
 ### 2. Rodando o Back-End (API)
 
 1. Navegue até a pasta `server`:
@@ -53,7 +61,6 @@ Este projeto é uma aplicação **full-stack** composta por um back-end em **Nod
    ```bash
    npm install
    ```
-
 
 3. Inicie o servidor:
 
@@ -90,8 +97,8 @@ Este projeto é uma aplicação **full-stack** composta por um back-end em **Nod
 Se você estiver utilizando o **VS Code** com **Dev Containers**, pode usar a configuração contida na pasta `.devcontainer` para criar um ambiente de desenvolvimento com o PostgreSQL integrado.
 
 1. Abra o projeto no **VS Code**.
-2. Selecione "Reopen in Container" para abrir o ambiente dentro do Docker, onde o PostgreSQL será automaticamente configurado.
-3. O banco de dados estará acessível dentro do contêiner com a configuração padrão do Docker.
+2. Selecione "Reopen in Container" para abrir o ambiente dentro do Docker ou Codespaces.
+3. O banco de dados estará acessível com a configuração padrão definida no Docker ou Codespaces.
 
 ## Endpoints da API
 
@@ -118,5 +125,4 @@ Aqui estão alguns dos principais endpoints disponíveis para interagir com o ba
 
 ### Banco de Dados
 
-- **PostgreSQL** (usando Docker e Dev Container para facilitar a configuração)
----
+- **PostgreSQL** (usando Docker ou Codespaces para facilitar a configuração)
